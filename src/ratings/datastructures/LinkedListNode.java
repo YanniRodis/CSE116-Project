@@ -2,7 +2,7 @@ package ratings.datastructures;
 
 public class LinkedListNode<T> {
 
-    private T value;
+    private final T value;
     private LinkedListNode<T> next;
 
     public LinkedListNode(T val, LinkedListNode<T> next) {

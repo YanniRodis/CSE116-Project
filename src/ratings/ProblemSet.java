@@ -1,7 +1,9 @@
 package ratings;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class ProblemSet {
@@ -18,12 +20,11 @@ public class ProblemSet {
 
 
     public static Double average(ArrayList<Double> numbers) {       // DOUBLE IS THE RETURN VARIABLE
-        double acc = 0;
-        numbers.add(1.0);
-        numbers.add(2.0);       // HOW TO ADD THE NUMBERS IN LIST AS A ARGUMENT?????
-        numbers.add(3.0);
-        numbers.add(6.0);
+        double acc = 0.0;
 
+        if (numbers.isEmpty()) {
+            return 0.0;
+        }
 
         for (int num = 0; num < numbers.size(); num++) {
             //System.out.println(numbers.size());
@@ -38,10 +39,9 @@ public class ProblemSet {
         return acc;
     }
 
-// STILL NEEDS WORK
-// NEEDS CONDTIONALS
+// SHOULD WORK CORRECTLY
 
-        //double x =Math.abs(-5
+
 
 
 
@@ -62,8 +62,8 @@ public class ProblemSet {
 
     public static int sumOfDigits(int sum){
         sum = Math.abs(sum);
-
         ArrayList<Integer> acc = new ArrayList<>();
+
         while (sum > 0) {       // GETS LAST DIGIT IN NUMBER AND ADDS IT TO ACC LIST, THEN RESTARTS
             acc.add(sum % 10);
             sum = sum / 10;
@@ -119,22 +119,29 @@ public class ProblemSet {
     //       If the HashMap is empty, return the empty String
     public static int bestKey(HashMap<String,Integer> map) {
         int retVal = 0;
-        map.put("bills",5);
-        map.put("CSE", 100);
-        map.put("MTH", 90);
+        map.put("bills",6080000);
+        map.put("CSE",  80000);
+        map.put("MTH", 900000);
+        //ArrayList<Integer> values = new ArrayList<>(map.values());
 
-        //ystem.out.println(map);
+
         for (String key : map.keySet()) {
             int value = map.get(key);
-            //System.out.println(value);
-             
+            if (value > retVal) {
+                retVal = value;
+                String Largest_key = key;
+                System.out.println(Largest_key);
+            }
+
+
+
         }
 
 
         return retVal ;
 
          }
-
+// NEED TO BE ABLE TO PUT THE RETURN STATEMENT SOMEWHERE
 
     // Examples
     // {"CSE": 100, "MTH": 90, "MGT": 10} returns "CSE"
@@ -146,7 +153,8 @@ public class ProblemSet {
 
 
     public static void main(String[] args) {
-       //ArrayList<Double> numbers = new ArrayList<>();
+       ArrayList<Double> numbers = new ArrayList<>(List.of());
+
        //System.out.println(average(numbers));
 
        //System.out.println( "THOUSANDS " + sumOfDigits(-123) + "\n" );
