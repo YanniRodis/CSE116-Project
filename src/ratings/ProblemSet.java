@@ -117,8 +117,8 @@ public class ProblemSet {
     // TODO: Write a public static method named bestKey that takes a HashMap of String to Integer
     //       as a parameter and returns a key mapping to the largest Integer. Ties can be broken arbitrarily.
     //       If the HashMap is empty, return the empty String
-    /*public static String bestKey(HashMap<String,Integer> map) {
-        //int retVal = 0;
+    public static String bestKey(HashMap<String,Integer> map) {
+        int retVal = 0;
         map.put("bills",6080000);
         map.put("CSE",  80000);
         map.put("MTH", 900000);
@@ -127,10 +127,10 @@ public class ProblemSet {
 
         for (String key : map.keySet()) {
             int value = map.get(key);
+            String KEY = key;
             if (value > retVal) {
                 retVal = value;
-                String Largest_key = key;
-                System.out.println(Largest_key);
+
             }
 
 
@@ -138,10 +138,10 @@ public class ProblemSet {
         }
 
 
-        return "g" ;
+        return "f"  ;
 
          }
-         */
+
 
 // NEED TO BE ABLE TO PUT THE RETURN STATEMENT SOMEWHERE
 
@@ -157,7 +157,7 @@ public class ProblemSet {
     public static void main(String[] args) {
        ArrayList<Double> numbers = new ArrayList<>(Arrays.asList(2.0));
 
-       System.out.println(average(numbers));
+       //System.out.println(average(numbers));
 
        //System.out.println( "THOUSANDS " + sumOfDigits(0) + "\n" );
        //System.out.println( "HUNDREDS " + sumOfDigits(-57));
@@ -165,7 +165,7 @@ public class ProblemSet {
 
         HashMap<String,Integer> map = new HashMap<>();
 
-        //System.out.println(bestKey(map));
+        System.out.println(bestKey(map));
 
 
 

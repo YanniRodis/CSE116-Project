@@ -5,6 +5,7 @@ import ratings.ProblemSet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -50,3 +51,8 @@ public class TestProblemSet {
 
     }
 }
+
+
+//hashmap
+
+//AssertEquals("STRING/KEY",HashMap)
