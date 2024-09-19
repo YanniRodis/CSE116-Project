@@ -118,18 +118,24 @@ public class ProblemSet {
     //       as a parameter and returns a key mapping to the largest Integer. Ties can be broken arbitrarily.
     //       If the HashMap is empty, return the empty String
     public static String bestKey(HashMap<String,Integer> map) {
-        int retVal = 0;
-        map.put("bills",6080000);
-        map.put("CSE",  80000);
-        map.put("MTH", 900000);
+        int retVal = Integer.MIN_VALUE;
+        int neg = 99999;
+
+        String KEY = "";
+
         //ArrayList<Integer> values = new ArrayList<>(map.values());
 
 
         for (String key : map.keySet()) {
             int value = map.get(key);
-            String KEY = key;
-            if (value > retVal) {
-                retVal = value;
+
+            //if ((value >  retVal)  ){
+            if ((value >  retVal) ){
+
+                    retVal = value;
+                    KEY = key;
+
+
 
             }
 
@@ -138,7 +144,7 @@ public class ProblemSet {
         }
 
 
-        return "f"  ;
+        return  KEY   ;
 
          }
 

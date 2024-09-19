@@ -50,6 +50,34 @@ public class TestProblemSet {
 
 
     }
+
+    @Test
+    public void testbestKey(){
+        HashMap<String,Integer> testMap1 = new HashMap<>();
+        testMap1.put("CSE",2000);
+        testMap1.put("MTH",1000);
+        testMap1.put("MGS",100);
+        testMap1.put("SEAS",9400);
+
+
+        assertEquals(ProblemSet.bestKey(testMap1),"SEAS");
+
+
+        HashMap<String,Integer> testMap2 = new HashMap<>();
+        testMap2.put("CSE",-2000);
+        testMap2.put("MTH",-1000);
+        testMap2.put("MGS",-100);
+        testMap2.put("SEAS",-9400);
+
+
+        assertEquals(ProblemSet.bestKey(testMap2),"MGS");
+
+
+
+
+        HashMap<String,Integer> testMap3 = new HashMap<>();
+        assertEquals(ProblemSet.bestKey(testMap3),"");
+    }
 }
 
 
