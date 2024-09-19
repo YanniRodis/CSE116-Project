@@ -25,11 +25,15 @@ public class TestProblemSet {
         ArrayList<Double> testList2 = new ArrayList<>(Arrays.asList(-4.0,5.0));
         assertEquals(ProblemSet.average(testList2), 0.5, 0.001);
 
-        ArrayList<Double> testList3 = new ArrayList<>(Arrays.asList(1000.0,20000.0,0.30000));
-        assertEquals(ProblemSet.average(testList3), 7000.1, 0.001);
+        ArrayList<Double> testList3 = new ArrayList<>(Arrays.asList(1000.0,20000.0,30000.0));
+        assertEquals(ProblemSet.average(testList3), 17000.0, 0.001);
 
-        ArrayList<Double> testList4 = new ArrayList<>(Arrays.asList(4557.0,-7998.0,7658.0));
-        assertEquals(ProblemSet.average(testList4), 1405.66667, 0.001);
+        ArrayList<Double> testList4 = new ArrayList<>(Arrays.asList(-10.0,-20.0,-30.0));
+
+        assertEquals(ProblemSet.average(testList4), -20.0, 0.001);
+
+        //ArrayList<Double> testList5 = new ArrayList<>(Arrays.asList(-4500.0,-8000.0,-7500.0));
+        //assertEquals(ProblemSet.average(testList5), 6666.666666667, 0.001);
 
 
 
@@ -41,11 +45,14 @@ public class TestProblemSet {
     public void testsumOfDigits() { //                              GOOD!!!!!!!!!!!!!
 
         assertTrue(ProblemSet.sumOfDigits(123)==6);
-        assertTrue(ProblemSet.sumOfDigits(-1000)==1);
+        assertTrue(ProblemSet.sumOfDigits(-10005)==6);
         assertTrue(ProblemSet.sumOfDigits(-1)==1);
         assertTrue(ProblemSet.sumOfDigits(-54)==9);
+        assertTrue(ProblemSet.sumOfDigits(-05)==5);
         assertTrue(ProblemSet.sumOfDigits(0)==0);
-        assertTrue(ProblemSet.sumOfDigits(128984849)==53);
+        assertTrue(ProblemSet.sumOfDigits(12345678)==36);
+
+
 
 
 
@@ -55,7 +62,7 @@ public class TestProblemSet {
     public void testbestKey(){
         HashMap<String,Integer> testMap1 = new HashMap<>();
         testMap1.put("CSE",2000);
-        testMap1.put("MTH",1000);
+        testMap1.put("MTH",9400);
         testMap1.put("MGS",100);
         testMap1.put("SEAS",9400);
 

@@ -34,7 +34,6 @@ public class ProblemSet {
         }
         acc /= numbers.size();
 
-        acc = Math.abs(acc);
 
         return acc;
     }
@@ -63,7 +62,9 @@ public class ProblemSet {
     public static int sumOfDigits(int sum){
         sum = Math.abs(sum);
         ArrayList<Integer> acc = new ArrayList<>();
-
+        if (sum == 0) {
+            return sum;
+        }
         while (sum > 0) {       // GETS LAST DIGIT IN NUMBER AND ADDS IT TO ACC LIST, THEN RESTARTS
             acc.add(sum % 10);
             sum = sum / 10;
@@ -130,7 +131,7 @@ public class ProblemSet {
             int value = map.get(key);
 
             //if ((value >  retVal)  ){
-            if ((value >  retVal) ){
+            if ((value >=  retVal) ){
 
                     retVal = value;
                     KEY = key;
