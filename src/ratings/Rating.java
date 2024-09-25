@@ -7,7 +7,7 @@ public class Rating
 
     public Rating(String ReviewerID, int Rating){
         this.ReviewerID = ReviewerID;
-        this.Rating = Rating;
+        this.setRating(Rating);
 
     }
     public String getReviewerID() {

@@ -8,6 +8,7 @@ public class Reviewer
     public Reviewer(String ReviewerID) {
         this.ReviewerID = ReviewerID;
     }
+
     public String getReviewerID() {
         return ReviewerID;
     }
@@ -16,8 +17,7 @@ public class Reviewer
 
     }
     public Rating rateSong(int num){
-        Rating ratingOBJ = new Rating(getReviewerID(), num);
-        return ratingOBJ;
+        return new Rating(getReviewerID(), num);
 
     }
 

@@ -16,6 +16,7 @@ public class Song {
     }
     public void setTitle(String title) {
         this.title = title;
+        //return title;
     }
 
     public String getArtist() {
@@ -32,5 +33,6 @@ public class Song {
         this.songID = songID;
 
     }
+
 }
 
