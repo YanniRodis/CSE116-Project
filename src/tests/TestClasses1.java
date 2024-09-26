@@ -142,18 +142,32 @@ public class TestClasses1 {
     @Test
     public void testReviewerRatings(){
 
-
+        /*
         //Rating ratingOBJ = new Rating(reviewer1.getReviewerID(), 100);
         Reviewer reviewerGiven = new Reviewer("1234");
-        Rating ratingGiven = new Rating("RS", 1);
-
+        Rating ratingGiven = new Rating("RS", 1)
 
         Rating REAL_Review = reviewerGiven.rateSong(1);
 
         int testVal = ratingGiven.getRating();
 
 
-        assertEquals( REAL_Review.getRating(), testVal) ;
+        assertEquals( REAL_Review.getRating(), ) ;
+        */
+         Rating actualReview = reviewerS.rateSong(100); //GOOD
+          int num = actualReview.getRating();
+          assertEquals(num, -1);
+
+        Rating actualReview1 = reviewerS.rateSong(4);
+        int num1 = actualReview1.getRating();
+        assertEquals(num1, 4);
+
+        Rating actualReview2 = reviewerS.rateSong(1);
+        int num2 = actualReview2.getRating();
+        assertEquals(num2, 1);
+        assertEquals( reviewerS.getReviewerID(),"1234");
+
+
 
     }
 
