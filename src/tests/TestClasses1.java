@@ -165,7 +165,7 @@ public class TestClasses1 {
         Rating actualReview2 = reviewerS.rateSong(1);
         int num2 = actualReview2.getRating();
         assertEquals(num2, 1);
-        assertEquals( reviewerS.getReviewerID(),"1234");
+        assertEquals( "1234",actualReview2.getReviewerID());
 
 
 
