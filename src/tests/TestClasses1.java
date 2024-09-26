@@ -86,14 +86,14 @@ public class TestClasses1 {
         assertEquals(expected1, Result3);
 
 
-        // 34 minutes in 9/25 lecture: talks about totest setters
+        // 34 minutes in 9/25 lecture: talks about test setters
     }
     @Test
     public void testInvalidRatings(){ //good
         r1.setRating(100);
         int expected = -1;
         int result1 = r1.getRating();
-        assertEquals(expected,r1.getRating());
+        assertEquals(expected,result1);
 
         assertEquals(-1,r3.getRating());
         assertEquals(-1,r4.getRating());
@@ -112,7 +112,7 @@ public class TestClasses1 {
     Reviewer reviewer2 = new Reviewer("1234");
     Reviewer reviewer3 = new Reviewer("");
     Reviewer reviewer4 = new Reviewer("");
-    Reviewer reviewer5 = new Reviewer(" ");
+    Reviewer reviewer5 = new Reviewer(" "); 
     Reviewer reviewer6 = new Reviewer(" ");
     public void compareReviewers(Reviewer reviewer1, Reviewer reviewer2) {
 
@@ -154,15 +154,15 @@ public class TestClasses1 {
 
         assertEquals( REAL_Review.getRating(), ) ;
         */
-         Rating actualReview = reviewerS.rateSong(100); //GOOD
+         var actualReview = reviewerS.rateSong(100); //GOOD
           int num = actualReview.getRating();
           assertEquals(num, -1);
 
-        Rating actualReview1 = reviewerS.rateSong(4);
+        var actualReview1 = reviewerS.rateSong(4);
         int num1 = actualReview1.getRating();
         assertEquals(num1, 4);
 
-        Rating actualReview2 = reviewerS.rateSong(1);
+        var actualReview2 = reviewerS.rateSong(1);
         int num2 = actualReview2.getRating();
         assertEquals(num2, 1);
         assertEquals( "1234",actualReview2.getReviewerID());
