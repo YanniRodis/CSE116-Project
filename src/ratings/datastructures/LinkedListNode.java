@@ -22,4 +22,10 @@ public class LinkedListNode<T> {
         return this.next;
     }
 
+
+
+
+
 }
+
+// linked list edge cases: delete last node, delete first code(HARDER): node stored in instance variable, need to update the value

@@ -10,8 +10,8 @@ import static org.junit.Assert.*;
 
 public class TestClasses1 {
 
-    Song s1 = new Song("PF","Time","1234");
-    Song s2 = new Song("PF","Time","1234");
+    Song s1 = new Song("PF","Time","1234" );
+    Song s2 = new Song("PF","Time","1234", );
 
     public void compareSongs(Song s1, Song s2) {
         assertEquals(s1.getTitle(), s2.getTitle());

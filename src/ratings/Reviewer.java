@@ -17,8 +17,8 @@ public class Reviewer
 
     }
     public Rating rateSong(int num){
-        return new Rating(getReviewerID(), num);
-
+        Rating ratingOBJ = new Rating(getReviewerID(), num);
+        return ratingOBJ;
     }
 
 
