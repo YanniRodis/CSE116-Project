@@ -4,25 +4,36 @@ import ratings.Reviewer;
 import ratings.Song;
 import ratings.Rating;
 import  org.junit.Test;
+import ratings.datastructures.LinkedListNode;
 
 import static org.junit.Assert.*;
 
 
 public class TestClasses1 {
+    Rating ratingGiven = new Rating("RS", 1);
 
-    Song s1 = new Song("PF","Time","1234" );
-    Song s2 = new Song("PF","Time","1234", );
+
+    private ratings.datastructures.LinkedListNode LinkedListNode;
+    Song s1 = new Song("PF","Time","1234",LinkedListNode  = new LinkedListNode(null, null));
+    Song s2 = new Song("PF","Time","1234",LinkedListNode  = new LinkedListNode(null, null));
+
+
+
 
     public void compareSongs(Song s1, Song s2) {
+
         assertEquals(s1.getTitle(), s2.getTitle());
         assertEquals(s1.getArtist(), s2.getArtist());
         assertEquals(s1.getSongID(), s2.getSongID());
+
 
     }
     @Test
     public void testCompareSongs() {
         compareSongs(s1, s2);
     }
+
+
     @Test
     public void testSongSetters(){ // good
         s1.setTitle("F");
