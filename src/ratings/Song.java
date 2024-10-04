@@ -2,7 +2,7 @@ package ratings;
 
 import ratings.datastructures.LinkedListNode;
 
-import java.util.ArrayList;
+import java.util.Objects;
 
 public class Song {
     private String title;
@@ -11,7 +11,7 @@ public class Song {
     private LinkedListNode<Rating> addedRatings; //CHANGED THE TYPE TO Rating
 
 
-    public Song(String title, String artist, String songID, LinkedListNode addedRatings) {// THIS IS THE CONSTRUCTOR
+    public Song(String title, String artist, String songID, LinkedListNode<Rating> addedRatings) {// THIS IS THE CONSTRUCTOR
 
         this.title = title;
         this.artist = artist;
@@ -49,8 +49,8 @@ public class Song {
     }
 
     public void addRating(Rating value) {
-        LinkedListNode node = new LinkedListNode<>(value, null);//creates new node
-        LinkedListNode HeadNode = new LinkedListNode(value, node);
+        LinkedListNode<Rating> node = new LinkedListNode<>(value, null);//creates new node
+        //LinkedListNode<Rating> HeadNode = new LinkedListNode(value, node);
 
         if (this.addedRatings == null) {
             this.addedRatings = node; // assigns the first node to the linkedlist
@@ -59,58 +59,91 @@ public class Song {
         }
     }
 
-    public void append(Rating value, LinkedListNode node) {
+    public void append(Rating value, LinkedListNode<Rating> node) {
         if (node.getNext() == null) {
-            node.setNext(new LinkedListNode<Rating>(value, null));
+            node.setNext(new LinkedListNode<>(value, null));
         } else {
             append(value, node.getNext());
         }
     }
 
-    public LinkedListNode getRatings() {
+    public LinkedListNode<Rating> getRatings() {
         return this.addedRatings;
     }
 
-    public void setRatings(LinkedListNode addedRatings) {
+    public void setRatings(LinkedListNode<Rating> addedRatings) {
         this.addedRatings = addedRatings;
 
     }
 
-    public Double averageRating() {
-        ArrayList<Rating> ListOfRatings = new ArrayList();    // ARRAYLIST OF RATING OBJECTS
-        ArrayList<Integer> Average = new ArrayList();    // ARRAYLIST OF RATING OBJECTS
-        int counter = 0; //counts the number of times
-        double addedValues = 0; // adds together all rating values
+    public double averageRating() {
 
 
-        LinkedListNode node = new LinkedListNode<>(addedRatings.getValue(), null);//creates new node
+        // LinkedListNode<Rating> node = new LinkedListNode<>(addedRatings.getValue(), null);//creates new node
         //addedRatings IS THE LINKEDLIST
 
-        LinkedListNode HeadNode = new LinkedListNode(addedRatings.getValue(), node);
-        //.getValue GETS THE RATING OBJECT FROM THE lINKED lIST
 
-
-        if (this.addedRatings == null) {
-            this.addedRatings = node; // assigns the first node to the linkedlist
+        if (addedRatings == null) {
+            return 0.0;
         } else {
-            ListOfRatings.add(addedRatings.getValue());
-            //append(value, node);
+            return addRatingValues(addedRatings.getValue().getRating(), addedRatings.getNext()) / SizeOfaddedRatings(addedRatings.getValue().getRating(), addedRatings.getNext());
+        }
+    }
+
+
+    public int addRatingValues(int RatingsValues, LinkedListNode<Rating> node) {
+        if (node.getNext() == null) {
+            //node.setNext(new LinkedListNode<Rating>(addedRatings.getValue(), null));
+            RatingsValues = addedRatings.getValue().getRating();
+            return RatingsValues;
+        } else {
+            return addedRatings.getValue().getRating() + addRatingValues(RatingsValues, node.getNext());
+
         }
 
-        for (Rating ratingObject : ListOfRatings) { // for each ratingObject in a ListOfRatings
-            int ratingValue = ratingObject.getRating(); //GETS the Rating value from the ratingObject
+    }
 
-            if ((ratingValue >= 1 && ratingValue <= 5)) { //checks if it is a valid rating
-                Average.add(ratingValue);  //adds the value from the ratingObject to the AverageList
-                counter += 1;
-            }
-
-        }
-        for (int value : Average) {
-            addedValues += value;
+    public int SizeOfaddedRatings(int value, LinkedListNode<Rating> node) {      // gets the size of the linkedlist
+        if (node.getNext() == null) {
+            return 1;
+        } else {
+            return 1 + SizeOfaddedRatings(value, node.getNext());
         }
 
+    }
 
+
+//        ADD THE VALUE FROM THE RATING OBJECT TO TEH ARRAYLIST
+//
+//        for (Rating ratingObject : ListOfRatings) { // for each ratingObject in a ListOfRatings
+//            int ratingValue = ratingObject.getRating(); //GETS the Rating value from the ratingObject
+//
+//            if ((ratingValue >= 1 && ratingValue <= 5)) { //checks if it is a valid rating
+//                Average.add(ratingValue);  //adds the value from the ratingObject to the AverageList
+//                counter += 1;
+//            }
+//
+//
+//
+//
+//    HOW TO SET NEXT TO THE NEXT NODE,AND THEN
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //        while (addedRatings.getNext() != null){
 //            ListOfRatings.add(addedRatings.getValue()); // adds the rating object to the Linked list
@@ -129,88 +162,45 @@ public class Song {
 //            addedValues += value;
 //        }
 //
-        if (addedRatings == null) {
-            return 0.0;
-        } else {
-            return addedValues / counter;
-        }
+
+
+    public void removeRatingByReviewer(Reviewer reviewer) {
+        //LinkedListNode node = new LinkedListNode<>(addedRatings.getValue(), null);//creates new node
+        //LinkedListNode HeadNode = new LinkedListNode(addedRatings.getValue(), node);
+
+
 
 
     }
 
-    public void removeRatingByReviewer(Reviewer reviewer){
-        LinkedListNode node = new LinkedListNode<>(addedRatings.getValue(), null);//creates new node
-        LinkedListNode HeadNode = new LinkedListNode(addedRatings.getValue(), node);
+
+    public void deleteNode(Reviewer reviewer){
+        if(Objects.equals(addedRatings.getValue().getReviewerID(), reviewer.getReviewerID())){
 
 
-    }
-    public int size() {
-        if (addedRatings.getNext() == null) {
-            return 1;
-        } else {
-
-            return 1 + size();
         }
+
     }
 }
+//delete headnode,lastnode,and middle
 
 
+//    public void addRatingValues(, LinkedListNode node) {
+//        if (node.getNext() == null) {
+//            node.setNext(new LinkedListNode<Rating>(value, null));
+//        } else {
+//            add(value, node.getNext());
+//        }
+//    }
 
 
-
-
-
-
-
-    /*public void setAddedRatings(LinkedListNode addedRatings) {
-        this.addedRatings = addedRatings;
-
-    }*/
-/*
-    public Double averageRating() {
-        ArrayList<Rating> RatingsArray = new ArrayList<>();
-        ArrayList<Double> Average = new ArrayList<>();
-        Double count = 0.0;
-
-
-
-        //LinkedListNode node = new LinkedListNode(this.addedRatings.getValue(),null);
-        LinkedListNode node = new LinkedListNode(this.addedRatings.getValue(), addedRatings.getNext());
-
-        LinkedListNode HeadNode = new LinkedListNode, node);
-
-
-        while (node.getNext() != null) {
-
-            RatingsArray.add(addedRatings.getValue());
-            //HOW TO GET THE INT VALUE FROM THE addedRatings LIST TO THE ARRAYLIST,INSTEAD OF THE WHOLE NODE
-
-        }
-
-        if(RatingsArray.size() ==0) {
-            return 0.0;
-        }
-        else{
-            for(() : RatingsArray){
-                Average.add(node.getValue());
-                count = count + node.getValue();    // Not sure how to get the rating value from addedRatings as a integer
-
-                return count / LLsize();
-
-            }
-
-        }
-
-
-    }
-
-    public int LLsize() { //HELPER METHOD
-        if (this.addedRatings.getNext() == null) {
-            return 1;
-        } else {
-            return 1 + LLsize();
-        }
-    }
+//    public void size(Rating value ,LinkedListNode node) {
+//        if (node.getNext() == null) {
+//            node.setNext(new LinkedListNode<Rating>(addedRatings.getValue(), null));
+//        } else {
+//            size(addedRatings.getValue(), node.getNext());
+//        }
+//    }
 
 
 
@@ -221,38 +211,98 @@ public class Song {
 
 
 
-
-
-    public void navigate(LinkedListNode node) {
-        // for ( node : addedRatings){
-
-    }
-
-
-
-}
-
-
-
-
-
-
-           // next.addRating(value);
-
-
-
-
-
-
-
-
-
-
-
-
- if (this.next == null) {
-            this.next = new LinkedListNode<>(value, null);
-        } else {
-            this.next.append(value);
-        }
- */
+//
+//    /*public void setAddedRatings(LinkedListNode addedRatings) {
+//        this.addedRatings = addedRatings;
+//
+//    }*/
+///*
+//    public Double averageRating() {
+//        ArrayList<Rating> RatingsArray = new ArrayList<>();
+//        ArrayList<Double> Average = new ArrayList<>();
+//        Double count = 0.0;
+//
+//
+//
+//        //LinkedListNode node = new LinkedListNode(this.addedRatings.getValue(),null);
+//        LinkedListNode node = new LinkedListNode(this.addedRatings.getValue(), addedRatings.getNext());
+//
+//        LinkedListNode HeadNode = new LinkedListNode, node);
+//
+//
+//        while (node.getNext() != null) {
+//
+//            RatingsArray.add(addedRatings.getValue());
+//            //HOW TO GET THE INT VALUE FROM THE addedRatings LIST TO THE ARRAYLIST,INSTEAD OF THE WHOLE NODE
+//
+//        }
+//
+//        if(RatingsArray.size() ==0) {
+//            return 0.0;
+//        }
+//        else{
+//            for(() : RatingsArray){
+//                Average.add(node.getValue());
+//                count = count + node.getValue();    // Not sure how to get the rating value from addedRatings as a integer
+//
+//                return count / LLsize();
+//
+//            }
+//
+//        }
+//
+//
+//    }
+//
+//    public int LLsize() { //HELPER METHOD
+//        if (this.addedRatings.getNext() == null) {
+//            return 1;
+//        } else {
+//            return 1 + LLsize();
+//        }
+//    }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//    public void navigate(LinkedListNode node) {
+//        // for ( node : addedRatings){
+//
+//    }
+//
+//
+//
+//}
+//
+//
+//
+//
+//
+//
+//           // next.addRating(value);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// if (this.next == null) {
+//            this.next = new LinkedListNode<>(value, null);
+//        } else {
+//            this.next.append(value);
+//        }
+// */
