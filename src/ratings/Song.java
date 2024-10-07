@@ -11,12 +11,12 @@ public class Song {
     private LinkedListNode<Rating> addedRatings; //CHANGED THE TYPE TO Rating
 
 
-    public Song(String title, String artist, String songID, LinkedListNode<Rating> addedRatings) {// THIS IS THE CONSTRUCTOR
+    public Song(String title, String artist, String songID) {// THIS IS THE CONSTRUCTOR
 
         this.title = title;
         this.artist = artist;
         this.songID = songID;
-        this.addedRatings = addedRatings;
+        //this.addedRatings = addedRatings;
 
     }
 
@@ -49,23 +49,42 @@ public class Song {
     }
 
     public void addRating(Rating value) {
-        LinkedListNode<Rating> node = new LinkedListNode<>(value, null);//creates new node
+//               LinkedListNode<Rating> node = new LinkedListNode<Rating>(value,null);//creates new node
+//               LinkedListNode<Rating> HeadNode = new LinkedListNode(value, node);
+//
+//        while (addedRatings != null){
+//            addedRatings = addedRatings.getNext();
+//
+//        }
+//    addedRatings.setNext(node);
+
+
+
+
+
+
+        LinkedListNode<Rating> node = new LinkedListNode<>(value,null);//creates new node
         //LinkedListNode<Rating> HeadNode = new LinkedListNode(value, node);
 
-        if (this.addedRatings == null) {
-            this.addedRatings = node; // assigns the first node to the linkedlist
+        if (node.getNext() == null) {            //IF WERE AT THE LAST/HEAD NODE
+            this.addedRatings= node; // assigns the first node to the linkedlist
+
         } else {
-            append(value, node);
+            //node = this.addedRatings
+            append(value,addedRatings.getNext()) ;
+
         }
     }
 
     public void append(Rating value, LinkedListNode<Rating> node) {
         if (node.getNext() == null) {
-            node.setNext(new LinkedListNode<>(value, null));
+            addedRatings.setNext(new LinkedListNode<>(value, this.addedRatings));
         } else {
-            append(value, node.getNext());
+            append(value, this.addedRatings);
         }
+
     }
+
 
     public LinkedListNode<Rating> getRatings() {
         return this.addedRatings;
@@ -77,7 +96,6 @@ public class Song {
     }
 
     public double averageRating() {
-
 
         // LinkedListNode<Rating> node = new LinkedListNode<>(addedRatings.getValue(), null);//creates new node
         //addedRatings IS THE LINKEDLIST
@@ -91,7 +109,7 @@ public class Song {
     }
 
 
-    public int addRatingValues(int RatingsValues, LinkedListNode<Rating> node) {
+    public int addRatingValues(int RatingsValues, LinkedListNode<Rating> node) {    //Helper for averageRating
         if (node.getNext() == null) {
             //node.setNext(new LinkedListNode<Rating>(addedRatings.getValue(), null));
             RatingsValues = addedRatings.getValue().getRating();
@@ -103,14 +121,63 @@ public class Song {
 
     }
 
-    public int SizeOfaddedRatings(int value, LinkedListNode<Rating> node) {      // gets the size of the linkedlist
-        if (node.getNext() == null) {
+    public int SizeOfaddedRatings(int value, LinkedListNode<Rating> node) {       //Helper for averageRating
+        if (node.getNext() == null) {                                             // gets the size of the linkedlist
             return 1;
         } else {
             return 1 + SizeOfaddedRatings(value, node.getNext());
         }
 
     }
+
+
+
+
+    public void removeRatingByReviewer(Reviewer reviewer) {
+        //LinkedListNode node = new LinkedListNode<>(addedRatings.getValue(), null);//creates new node
+        //LinkedListNode HeadNode = new LinkedListNode(addedRatings.getValue(), node);
+
+
+
+
+
+
+
+    }
+
+
+    public void deleteNode(LinkedListNode<Rating> previousNode,LinkedListNode<Rating> currentNode, Reviewer reviewer){ //helper
+        //previousNode IS THE HEAD NODE technically
+
+        if (currentNode != null) {
+            if( Objects.equals(addedRatings.getValue().getReviewerID(), reviewer.getReviewerID() ) ) {   //if the RATING OBJECT reviewerid == reviewerID
+                currentNode = addedRatings.getNext();   //gets the current nodes reference
+                previousNode.setNext(currentNode);  //sets the previous nodes reference TO the current node reference
+
+
+            }
+            else {
+                deleteNode(previousNode,currentNode,reviewer);
+            }
+        }
+
+//
+//
+//        }
+
+    }
+    public String toString() {
+    LinkedListNode<Rating> node = new LinkedListNode<>( addedRatings.getValue(),null);
+        String out = "";
+        out += node.getValue();
+        if (node.getNext() != null) {
+            out += " " + node.getNext().toString();
+        }
+        return out;
+    }
+}
+//delete headnode,lastnode,and middle
+
 
 
 //        ADD THE VALUE FROM THE RATING OBJECT TO TEH ARRAYLIST
@@ -163,26 +230,6 @@ public class Song {
 //        }
 //
 
-
-    public void removeRatingByReviewer(Reviewer reviewer) {
-        //LinkedListNode node = new LinkedListNode<>(addedRatings.getValue(), null);//creates new node
-        //LinkedListNode HeadNode = new LinkedListNode(addedRatings.getValue(), node);
-
-
-
-
-    }
-
-
-    public void deleteNode(Reviewer reviewer){
-        if(Objects.equals(addedRatings.getValue().getReviewerID(), reviewer.getReviewerID())){
-
-
-        }
-
-    }
-}
-//delete headnode,lastnode,and middle
 
 
 //    public void addRatingValues(, LinkedListNode node) {
