@@ -42,6 +42,7 @@ public class TestClasses1 {
         assertEquals(expected, actual);
 
 
+
         s1.setArtist("Tme");
         String expected2 = "Tme";
         String actual2 = s1.getArtist();

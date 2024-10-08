@@ -30,7 +30,24 @@ public class TestDataStructures1 {
 
     @Test
     public void TestAverageRating(){
+        Rating r1 = new Rating("RS", 1);
+        Song s1 = new Song("PF", "Time", "1234");
 
+        //LinkedListNode List = new LinkedListNode<>(r1, null);
+        s1.addRating(new Rating("RS", 1));
+        s1.addRating(new Rating("RS", 2));
+        s1.addRating(new Rating("R9S", 3));
+        s1.addRating(new Rating("R8S", 4));
+
+
+
+
+        //s1.addRating(r1); // no errors so far
+        s1.averageRating(); // get stack overflow error
+
+
+        System.out.println(s1.averageRating());
+        //System.out.println(s1);
     }
     @Test
     public void TestRemoveRatingByReviewer(){
@@ -46,21 +63,5 @@ public class TestDataStructures1 {
 
 
 
-    public static void main(String[] args) {
-        Rating r1 = new Rating("RS", 1);
-        Song s1 = new Song("PF", "Time", "1234");
 
-        //LinkedListNode List = new LinkedListNode<>(r1, null);
-        s1.addRating(new Rating("RS", 1));
-        s1.addRating(new Rating("RS", 2));
-        s1.addRating(new Rating("R9S", 24));
-        s1.addRating(new Rating("R8S", 28));
-
-
-
-
-
-      s1.toString();
-        System.out.println(s1.toString());
-    }
 }
