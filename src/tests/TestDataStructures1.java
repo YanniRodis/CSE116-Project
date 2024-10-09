@@ -37,12 +37,13 @@ public class TestDataStructures1 {
         s1.addRating(new Rating("RS", 1));
         s1.addRating(new Rating("RS", 2));
         s1.addRating(new Rating("R9S", 3));
-        s1.addRating(new Rating("R8S", 4));
+        s1.addRating(new Rating("R8S", 8));
 
 
 
 
         //s1.addRating(r1); // no errors so far
+
         s1.averageRating(); // get stack overflow error
 
 
