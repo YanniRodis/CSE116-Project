@@ -48,7 +48,7 @@ public class Song {
 
     }
 
-    public void addRating(Rating value) { //SHOULD BE WORKING BECAUSE THE NEXT PARAM CHANGES IN THE DEBUGGER
+    public void addRating(Rating value) { //WORKS :)
 
 //               LinkedListNode<Rating> node = new LinkedListNode<Rating>(value,null);//creates new node
 //               LinkedListNode<Rating> HeadNode = new LinkedListNode(value, node);
@@ -68,19 +68,28 @@ public class Song {
 
         } else {
             //node = this.addedRatings
-            append(value,node) ;
+            append(addedRatings,node) ;
 
         }
     }
 
-    public void append(Rating value, LinkedListNode<Rating> node) {
-        if (node.getNext() == null) {
-            addedRatings.setNext(new LinkedListNode<>(value, this.addedRatings));
-        } else {
-            append(value, this.addedRatings);
-        }
+//    public void append(Rating value, LinkedListNode<Rating> node) {
+//        if (node.getNext() == null) {
+//            addedRatings.setNext(new LinkedListNode<>(value, this.addedRatings));
+//        } else {
+//            append(value, this.addedRatings);
+//        }
+//
+//    }
+public void append(LinkedListNode<Rating> currentNode, LinkedListNode<Rating> newNode) {
 
+    if (currentNode.getNext() == null) {
+        currentNode.setNext(newNode);
+    } else {
+        append(currentNode.getNext(), newNode);
     }
+}
+
 ;
 
     public LinkedListNode<Rating> getRatings() {
@@ -113,13 +122,7 @@ public class Song {
             //need base case
            //null is not at the last value for some reason
 
-            if (size== 0){
-                return size;
-            }
-            else{
                 return sum / size; //ONLY HAPPENS WHEN IT REACHS THE END OF THE LIST.
-
-            }
 
         } else{
             if (node.getValue().getRating() >= 1 && node.getValue().getRating() <= 5) {
@@ -128,9 +131,11 @@ public class Song {
 
                 sum += node.getValue().getRating();    //adds all the values together
                 size++; //get the count
+
             }
         }
         return AverageHelper(node.getNext(),sum,size);
+
 
     }
 //    public double _averageRating(LinkedListNode<Rating> currentnode) {    //Helper for averageRating
