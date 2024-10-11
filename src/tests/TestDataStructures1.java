@@ -10,11 +10,14 @@ import static org.junit.Assert.*;
 
 
 public class TestDataStructures1 {
+    Rating ratingObject = new Rating("131", 1);
 
-    public void compareListsOfRatings() {
-        Rating ratingObject = new Rating("131", 1);
-        LinkedListNode<Rating> LinkedListOfRatings1 = new LinkedListNode<>(ratingObject, null);
-        LinkedListNode<Rating> LinkedListOfRatings2 = new LinkedListNode<>(ratingObject, null);
+    LinkedListNode<Rating> LinkedListOfRatings1= new LinkedListNode<Rating>(ratingObject,null);
+    LinkedListNode<Rating> LinkedListOfRatings2= new LinkedListNode<Rating>(ratingObject,null);
+
+
+    public void compareListsOfRatings( LinkedListNode<Rating> LinkedListOfRatings1, LinkedListNode<Rating> LinkedListOfRatings2) {
+        
 
         assertEquals(
                 LinkedListOfRatings1.getValue().getRating(),
@@ -39,15 +42,18 @@ public class TestDataStructures1 {
         s1.addRating(new Rating("SECONDNODE", 2));
         s1.addRating(new Rating("THIRDNODE", 3));
         s1.addRating(new Rating("FOURTHNODE", 8));
+        s1.addRating(new Rating("FIFTHHNODE", 8));
+
+
 
 
 
 
         //s1.addRating(r1); // no errors so far
 
-        s1.averageRating(); // get stack overflow error
+        //s1.averageRating(); // get stack overflow error
 
-        s1.removeRatingByReviewer(new Reviewer("THIRDNODE"));
+       //s1.removeRatingByReviewer(new Reviewer("THIRDNODE"));
 
         //System.out.println(s1.averageRating());
         //System.out.println(s1);

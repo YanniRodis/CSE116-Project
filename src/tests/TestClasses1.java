@@ -13,7 +13,7 @@ public class TestClasses1 {
     Rating ratingGiven = new Rating("RS", 1);
 
 
-    private ratings.datastructures.LinkedListNode LinkedListNode;
+
     Song s1 = new Song("PF","Time","1234");
     Song s2 = new Song("PF","Time","1234");
 

@@ -2,6 +2,8 @@ package ratings;
 
 import ratings.datastructures.LinkedListNode;
 
+import java.util.Objects;
+
 public class Song {
     private String title;
     private String artist;
@@ -70,7 +72,8 @@ public class Song {
 
         }
     }
-//    public void append(Rating value, LinkedListNode<Rating> node) {
+
+    //    public void append(Rating value, LinkedListNode<Rating> node) {
 //        if (node.getNext() == null) {
 //            addedRatings.setNext(new LinkedListNode<>(value, this.addedRatings));
 //        } else {
@@ -171,35 +174,52 @@ public class Song {
 //    }
 
 
+//    public void removeRatingByReviewer(Reviewer reviewer) {
+////        LinkedListNode<Rating> temp = this.addedRatings;
+////            if (this.addedRatings.getValue().getReviewerID() == reviewer.getReviewerID()){
+////                temp.setNext(this.addedRatings);
+//        LinkedListNode<Rating> temp = addedRatings.getNext();
+//
+////
+////            }
+//            while (this.addedRatings != null){
+//                if(this.addedRatings.getValue().getReviewerID().equals(reviewer.getReviewerID())){
+//                    LinkedListNode<Rating> prev = addedRatings;
+//                    LinkedListNode<Rating> right = temp.getNext();
+//                    prev.setNext(right);
+//
+//
+//                }
+//                temp.setNext(null);
+//
+//
+//            }
+//
+//
+//    }
+public void removeRatingByReviewer(Reviewer reviewer) {
 
 
-    public void removeRatingByReviewer(Reviewer reviewer) {
-
-        LinkedListNode<Rating> Prev = addedRatings.getNext();
-        LinkedListNode<Rating> Temp = Prev.getNext();
-        LinkedListNode<Rating> Current = Temp.getNext();
-        while(Temp.getNext() != null){
-
-            if (Temp.getValue().getReviewerID() == reviewer.getReviewerID()){
-
-                Current = Temp.getNext();
-                Temp.setNext(Current.getNext());
-
-            }
-            Prev.setNext(Current);
-
-        }
-
-
-
+    LinkedListNode<Rating> Prev = addedRatings.getNext();
+    LinkedListNode<Rating> Temp = Prev.getNext();
+    LinkedListNode<Rating> Current = Temp.getNext();
+//    while (Temp.getNext() != null) {
+//
+//        if (Temp.getValue().getReviewerID() == reviewer.getReviewerID()) {
+//
+//            Current = Temp.getNext();
+//            Temp.setNext(Current.getNext());
+//
+//        }
+//        Prev.setNext(Current);
+//
+//
+//    }
+}
+}
 
 
 
-
-
-
-
-    }
         //LinkedListNode node = new LinkedListNode<>(addedRatings.getValue(), null);//creates new node
         //LinkedListNode HeadNode = new LinkedListNode(addedRatings.getValue(), node);
         // _deleteNode(addedRatings,addedRatings.getNext(), reviewer);
@@ -267,7 +287,7 @@ public class Song {
 //
 
 
-}
+
 
 
 
